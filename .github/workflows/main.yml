@@ -31,7 +31,7 @@ jobs:
         matlab-version: [R2023a]
 
     # Specify the runner that the job will run on.
-    runs-on: ${{ win11-vdi }}
+    runs-on: ${{ matrix.os }}
 
     # Steps define a sequence of tasks to be executed as part of the job.
     steps:
