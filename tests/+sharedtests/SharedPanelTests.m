@@ -115,7 +115,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
         end % tSettingInvalidSelectionErrorsWhenChildrenArePresent
         %}
 
-        %{
+        
         function tSettingSelectionPropertyIsCorrect( ...
                 testCase, ConstructorName )
             disp("check 5");
@@ -186,8 +186,8 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ConstructorName, ' component was not warning-free.'] )            
             disp("pass 8");
         end % tAddingInvisibleControlIsWarningFree
-        %}
         
+        %{
         function tAddingInternalControlDoesNotAffectContents( ...
                 testCase, ConstructorName )
             disp("check 9");
@@ -213,7 +213,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'was switched to non-internal.'] )
             disp("pass 9");
         end % tAddingInternalControlDoesNotAffectContents
-        
+        %}
         %{
         function tDynamicAdditionOfEnableProperty( ...
                 testCase, ConstructorName )
