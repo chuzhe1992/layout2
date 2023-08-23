@@ -9,14 +9,10 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure
             % Create the component.
             component = testCase.constructComponent(ConstructorName); 
 
-            % Create an invisible control then reparent it to the
-            % component.
+            % Create an invisible control 
             button = uicontrol( 'Parent', [], 'Visible', 'off' );
             testCase.addTeardown( @() delete( button ) )
-            %reparenter = @() set( button, 'Parent', component );
-            %testCase.verifyWarningFree( reparenter, ...
-            %    ['Reparenting an invisible control to the ', ...
-            %    ConstructorName, ' component was not warning-free.'] )            
+       
         end 
 
   end
