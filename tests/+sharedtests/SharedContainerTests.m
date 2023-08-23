@@ -49,7 +49,7 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
 
         function tConstructorWithNoArgumentsIsWarningFree( ...
                 testCase, ConstructorName )
-
+            disp("check 11");
             % This test only applies to containers in the uix namespace.
             % (Containers in the uiextras namespace exhibit auto-parenting
             % behavior, which is tested separately.)
@@ -63,12 +63,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyWarningFree( creator, ...
                 ['The ', ConstructorName, ' constructor was ', ...
                 'not warning-free when called with no input arguments.'] )
-
+            disp("pass 11");
         end % tConstructorWithNoArgumentsIsWarningFree
 
         function tConstructorWithNoArgumentsReturnsScalarComponent( ...
                 testCase, ConstructorName )
-
+            disp("check 12");
             % This test only applies to containers in the uix namespace.
             % (Containers in the uiextras namespace exhibit auto-parenting
             % behavior, which is tested separately.)
@@ -89,12 +89,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.assertSize( component, [1, 1], ...
                 ['The ', ConstructorName, ...
                 ' constructor did not return a scalar object.'] )
-
+            disp("pass 12");
         end % tConstructorWithNoArgumentsReturnsScalarComponent
 
         function tConstructorWithAnEmptyParentIsWarningFree( ...
                 testCase, ConstructorName )
-
+            disp("check 13");
             % Verify that constructing a component with the 'Parent'
             % property set to [] is warning-free.
             creator = @() constructComponentWithoutFixture( ...
@@ -103,12 +103,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' constructor was ', ...
                 'not warning-free when called with ''Parent'' ', ...
                 'set to [].'] )
-
+            disp("pass 13");
         end % tConstructorWithAnEmptyParentIsWarningFree
 
         function tConstructorWithAnEmptyParentReturnsScalarComponent( ...
                 testCase, ConstructorName )
-
+            disp("check 14");
             % Call the constructor with an empty 'Parent' input.
             component = constructComponentWithoutFixture( ...
                 ConstructorName, 'Parent', [] );
@@ -123,11 +123,11 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.assertSize( component, [1, 1], ...
                 ['The ', ConstructorName, ...
                 ' constructor did not return a scalar object.'] )
-
+            disp("pass 14");
         end % tConstructorWithAnEmptyParentReturnsScalarComponent
 
         function tAutoParentBehaviorIsCorrect( testCase, ConstructorName )
-
+            disp("check 15");
             % Testing auto-parenting behavior only applies to containers in
             % the uiextras namespace. Containers in the uix namespace do
             % not exhibit auto-parenting behavior.
@@ -155,12 +155,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             % created above.
             testCase.verifySameHandle( component.Parent, newFig, ...
                 [ConstructorName, ' has not auto-parented correctly.'] )
-
+            disp("pass 15");
         end % tAutoParentBehaviorIsCorrect
 
         function tConstructorWithParentArgumentIsWarningFree( ...
                 testCase, ConstructorName )
-
+            disp("check 16");
             % Verify that calling the component constructor with the
             % 'Parent' input argument given by the figure fixture is
             % warning-free.
@@ -169,12 +169,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' constructor was not ', ...
                 'warning-free when called with the ''Parent'' input ', ...
                 'argument.'] )
-
+            disp("pass 16");
         end % tConstructorWithParentArgumentIsWarningFree
 
         function tConstructorWithParentArgumentReturnsScalarComponent( ...
                 testCase, ConstructorName )
-
+            disp("check 17");
             % Call the component constructor.
             component = testCase.constructComponent( ConstructorName );
 
@@ -191,12 +191,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ' constructor did not return ', ...
                 'a scalar object when called with the ''Parent'' ', ...
                 'input argument.'] )
-
+            disp("pass 17");
         end % tConstructorWithParentArgumentReturnsScalarComponent
 
         function tConstructorSetsRepeatedNameValuePairsCorrectly( ...
                 testCase, ConstructorName )
-
+            disp("check 18");
             % Create the component, passing in repeated name-value pairs.
             component = testCase.constructComponent( ConstructorName, ...
                 'Tag', '1', 'Tag', '2', 'Tag', '3' );
@@ -205,12 +205,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' constructor did not set ', ...
                 'the ''Tag'' correctly when this property was passed ', ...
                 'multiple times to the constructor.'] )
-
+            disp("pass 18");
         end % tConstructorSetsRepeatedNameValuePairsCorrectly
 
         function tConstructorErrorsWithBadArguments( ...
                 testCase, ConstructorName )
-
+            disp("check 19");
             % Test with providing the name of a property only.
             invalidConstructor = @() testCase.constructComponent( ...
                 ConstructorName, 'BackgroundColor' );
@@ -222,12 +222,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ConstructorName, 200 );
             testCase.verifyError( ...
                 invalidConstructor, 'uix:InvalidArgument' );
-
+            disp("pass 19");
         end % tConstructorErrorsWithBadArguments
 
         function tChildObserverDoesNotIncorrectlyAddElements( ...
                 testCase, ConstructorName )
-
+            disp("check 20");
             % Create the component and verify that its 'Contents' property
             % has no elements.
             component = testCase.constructComponent( ConstructorName );
@@ -240,12 +240,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             % Verify that the component's 'Contents' property has one
             % element.
             testCase.verifyNumElements( component.Contents, 1 )
-
+            disp("pass 20");
         end % tChildObserverDoesNotIncorrectlyAddElements
 
         function tContentsAreUpdatedWhenChildrenAreAdded( ...
                 testCase, ConstructorName )
-
+            disp("check 21");
             % Create the component, with children.
             [component, kids] = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -254,12 +254,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' component has not ', ...
                 'updated its ''Contents'' property correctly when ', ...
                 'controls were added.'] )
-
+            disp("pass 21");
         end % tContentsAreUpdatedWhenChildrenAreAdded
 
         function tContentsAreUpdatedWhenAChildIsDeleted( testCase, ...
                 ConstructorName )
-
+            disp("check 22");
             % Create the component, with children.
             [component, kids] = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -272,12 +272,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' component has not ', ...
                 'updated its ''Contents'' property correctly when ', ...
                 'a child was deleted.'] )
-
+            disp("pass 22");
         end % tContentsAreUpdatedWhenAChildIsDeleted
 
         function tContentsAreUpdatedWhenAChildIsReparented( ...
                 testCase, ConstructorName )
-
+            disp("check 23");
             % Create the component, with children.
             [component, kids] = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -291,12 +291,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' component has not ', ...
                 'updated its ''Contents'' property correctly when ', ...
                 'a child was reparented.'] )
-
+            disp("pass 23");
         end % tContentsAreUpdatedWhenAChildIsReparented
 
         function tContentsAreUpdatedAfterChildrenAreReordered( ...
                 testCase, ConstructorName )
-
+            disp("check 24");
             % Create the component, with children.
             component = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -311,12 +311,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' component has not ', ...
                 'updated its ''Contents'' property correctly when ', ...
                 'the children were reordered.'] )
-
+            disp("pass 24");
         end % tContentsAreUpdatedAfterChildrenAreReordered
 
         function tPlottingInAxesInComponentRespectsContents( ...
                 testCase, ConstructorName )
-
+            disp("check 25");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -340,12 +340,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 component.Contents(1), ax(1), diagnostic )
             testCase.verifySameHandle( ...
                 component.Contents(2), ax(2), diagnostic )
-
+            disp("pass 25");
         end % tPlottingInAxesInComponentRespectsContents
 
         function tAxesInComponentRemainsVisibleAfter3DRotation( ...
                 testCase, ConstructorName )
-
+            disp("check 26");
             % Assume the component is rooted.
             testCase.assumeGraphicsAreRooted()
 
@@ -362,12 +362,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyEqual( char( ax.Visible ), 'on', ...
                 ['Enabling 3D rotation mode on an axes within a ', ...
                 ConstructorName, ' component made the axes invisible.'] )
-
+            disp("pass 26");
         end % tAxesInComponentRemainsVisibleAfter3DRotation
 
         function tEnablingDataCursorModePreservesAxesPosition( ...
                 testCase, ConstructorName )
-
+            disp("check 27");
             % Data cursor mode only works in Java figures, so we need to
             % exclude the unrooted and Web figure cases.
             testCase.assumeGraphicsAreRooted()
@@ -404,12 +404,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['Enabling data cursor mode on an axes in a ', ...
                 ConstructorName, ' component caused the axes ', ...
                 '''Position'' property to change.'] )
-
+            disp("pass 27");
         end % tEnablingDataCursorModePreservesAxesPosition
 
         function tContentsRespectAddingAxesAndControl( ...
                 testCase, ConstructorName )
-
+            disp("check 28");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -430,12 +430,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             pause( 0.1 )
             testCase.verifyEqual( ...
                 component.Contents, [ax; c], diagnostic )
-
+            disp("pass 28");
         end % tContentsRespectAddingAxesAndControl
 
         function tSettingContentsAcceptsRowOrientation( ...
                 testCase, ConstructorName )
-
+            disp("check 29");
             % Create a component with children.
             [component, kids] = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -452,11 +452,11 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['Setting the ''Contents'' property of the ', ...
                 ConstructorName, ' component as a row vector did not ', ...
                 'assign the value correctly.'] )
-
+            disp("pass 29");
         end % tSettingContentsAcceptsRowOrientation
 
         function tContainerEnableGetMethod( testCase, ConstructorName )
-
+            disp("check 30");
             % Filter the test if the container does not have get and set
             % methods for the 'Enable' property.
             testCase.assumeComponentHasEnableGetSetMethods( ...
@@ -469,11 +469,11 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyEqual( component.Enable, 'on', ...
                 ['The ''Enable'' property of the ', ConstructorName, ...
                 'container is not set to ''on''.'] )
-
+            disp("pass 30");
         end % tContainerEnableGetMethod
 
         function tContainerEnableSetMethod( testCase, ConstructorName )
-
+            disp("check 31");
             % Filter the test if the container does not have get and set
             % methods for the 'Enable' property.
             testCase.assumeComponentHasEnableGetSetMethods( ...
@@ -499,12 +499,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 [ConstructorName, ' has not produced an ', ...
                 'error with the expected ID when the ''Enable'' ', ...
                 'property was set to an invalid value.'] )
-
+            disp("pass 31")
         end % tContainerEnableSetMethod
 
         function tContainerDynamicEnableGetMethod( ...
                 testCase, ConstructorName )
-
+            disp("check 32");
             % Filter the test if the component does not have a dynamic
             % 'Enable' property.
             testCase.assumeComponentHasDynamicEnableProperty( ...
@@ -521,12 +521,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyTrue( strcmp( component.Enable, 'on' ), ...
                 ['The ''Enable'' property of the ', ...
                 ConstructorName, ' is not set to ''on''.'] )
-
+            disp("pass 32");
         end % tContainerDynamicEnableGetMethod
 
         function tContainerDynamicEnableSetMethod( ...
                 testCase, ConstructorName )
-
+            disp("check 33");
             % Filter the test if the component does not have a dynamic
             % 'Enable' property.
             testCase.assumeComponentHasDynamicEnableProperty( ...
@@ -557,11 +557,11 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 [ConstructorName, ' has not produced an ', ...
                 'error with the expected ID when the ''Enable'' ', ...
                 'property was set to an invalid value.'] )
-
+            disp("pass 33");
         end % tContainerDynamicEnableSetMethod
 
         function tGetSelectedChild( testCase, ConstructorName )
-
+            disp("check 34");
             % Filter the test if the component does not have the
             % 'SelectedChild' property.
             testCase.assumeComponentHasSelectedChildProperty( ...
@@ -590,11 +590,11 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyEqual( component.SelectedChild, 1, ...
                 ['The ''SelectedChild'' property of ', ...
                 ConstructorName, ' is not equal to 1.'] )
-
+            disp("pass 34");
         end % tGetSelectedChild
 
         function tSetSelectedChild( testCase, ConstructorName )
-
+            disp("check 35");
             % Filter the test if the component does not have the
             % 'SelectedChild' property.
             testCase.assumeComponentHasSelectedChildProperty( ...
@@ -610,12 +610,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyWarningFree( setter, ...
                 [ConstructorName, ' did not accept setting the ', ...
                 '''SelectedChild'' property.'] )
-
+            disp("pass 35");
         end % tSetSelectedChild
 
         function tAutoResizeChildrenIsNotAProperty( ...
                 testCase, ConstructorName )
-
+            disp("check 36");
             % This test is only for containers (not panels).
             testCase.assumeComponentIsAContainer( ConstructorName )
 
@@ -629,12 +629,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyFalse( hasAutoResizeChildren, ...
                 ['The ', ConstructorName, ' component has the ', ...
                 '''AutoResizeChildren'' property. '] )
-
+            disp("pass 36");
         end % tAutoResizeChildrenIsNotAProperty
 
         function tAutoResizeChildrenIsOffForPanels( ...
                 testCase, ConstructorName )
-
+            disp("check 37");
             % This test is only for panels (not containers).
             testCase.assumeComponentIsAPanel( ConstructorName )
 
@@ -651,12 +651,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                     'of the ', ConstructorName, ' component to be ', ...
                     '''off''.'] )
             end % if
-
+            disp("pass 37");
         end % tAutoResizeChildrenIsOffForPanels
 
         function tSettingAutoResizeChildrenToOffIsPreserved( ...
                 testCase, ConstructorName )
-
+            disp("check 38");
             % This test is only for panels (not containers).
             testCase.assumeComponentIsAPanel( ConstructorName )
 
@@ -674,7 +674,7 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             testCase.verifyEqual( autoResizeKids, 'off', ...
                 ['The ', ConstructorName, ' constructor did not ', ...
                 'turn off the ''AutoResizeChildren'' property.'] )
-
+            disp("pass 38");
         end % tSettingAutoResizeChildrenToOffIsPreserved
 
     end % methods ( Test, Sealed )
