@@ -1,4 +1,4 @@
-classdef tBoxPanel < sharedtests.SharedPanelTests
+classdef tSimpleTest < sharedtests.SharedPanelTests
     %TBOXPANEL Tests for uiextras.BoxPanel and uix.BoxPanel.
 
     properties ( TestParameter )
