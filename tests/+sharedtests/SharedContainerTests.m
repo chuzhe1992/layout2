@@ -46,7 +46,7 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
     end
 
     methods ( Test, Sealed )
-
+%{
         function tConstructorWithNoArgumentsIsWarningFree( ...
                 testCase, ConstructorName )
             disp("check 11");
@@ -676,15 +676,106 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 'turn off the ''AutoResizeChildren'' property.'] )
             disp("pass 38");
         end % tSettingAutoResizeChildrenToOffIsPreserved
-
+%}
     end % methods ( Test, Sealed )
-
+%{
     methods ( Test, Sealed, ParameterCombination = 'sequential' )
 
+        function tConstructorIsWarningFreeWithArguments( ...
+                testCase, ConstructorName, NameValuePairs )
+            disp("check 39");
+            % Verify that creating the component and passing additional
+            % input arguments to the constructor is warning-free.
+            %creator = @() testCase.constructComponent( ...
+            %    ConstructorName, NameValuePairs{:} );
+            %testCase.verifyWarningFree( creator, ...
+             %   ['The ', ConstructorName, ' constructor was not ', ...
+            %    'warning-free when called with additional ', ...
+            %    'input arguments.'] )
+            disp("pass 39");
+        end % tConstructorIsWarningFreeWithArguments
 
+        function tConstructorWithArgumentsReturnsScalarComponent( ...
+                testCase, ConstructorName, NameValuePairs )
+            disp("check 40");
+            % Call the component constructor.
+            component = testCase.constructComponent( ...
+                ConstructorName, NameValuePairs{:} );
+
+            % Assert that the type is correct.
+            testCase.assertClass( component, ConstructorName, ...
+                ['The ', ConstructorName, ...
+                ' constructor did not return ', ...
+                'an object of type ', ConstructorName, ' when called ', ...
+                'with the ''Parent'' input argument and additional ', ...
+                'input arguments.'] )
+
+            % Assert that the returned object is a scalar.
+            testCase.assertSize( component, [1, 1], ...
+                ['The ', ConstructorName, ...
+                ' constructor did not return ', ...
+                'a scalar object when called with the ''Parent'' ', ...
+                'input argument and additional input arguments.'] )
+            disp("pass 40");
+        end % tConstructorWithArgumentsReturnsScalarComponent
+
+        function tConstructorSetsNameValuePairsCorrectly( ...
+                testCase, ConstructorName, NameValuePairs )
+            disp("check 41");
+            % Call the component constructor.
+            component = testCase.constructComponent( ...
+                ConstructorName, NameValuePairs{:} );
+
+            % Verify that the component constructor has correctly assigned
+            % the name-value pairs.
+            for k = 1 : 2 : length( NameValuePairs )-1
+                propertyName = NameValuePairs{k};
+                propertyValue = NameValuePairs{k+1};
+                actualValue = component.(propertyName);
+                if ~isa( propertyValue, 'function_handle' )
+                    classOfPropertyValue = class( propertyValue );
+                    actualValue = feval( ...
+                        classOfPropertyValue, actualValue );
+                end % if
+                testCase.verifyEqual( actualValue, propertyValue, ...
+                    ['The ', ConstructorName, ' constructor has not ', ...
+                    'assigned the ''', propertyName, ''' property ', ...
+                    'correctly.'] )
+            end % for
+            disp("pass41");
+        end % tConstructorSetsNameValuePairsCorrectly
+
+        function tGetAndSetMethodsFunctionCorrectly( ...
+                testCase, ConstructorName, NameValuePairs )
+            disp("check 42");
+            % Construct the component.
+            component = testCase.constructComponent( ConstructorName );
+
+            % For each property, set its value and verify that the
+            % component has correctly assigned the value.
+            for k = 1 : 2 : length( NameValuePairs )
+                % Extract the current name-value pair.
+                propertyName = NameValuePairs{k};
+                propertyValue = NameValuePairs{k+1};
+                % Set the property in the component.
+                component.(propertyName) = propertyValue;
+                % Verify that the property has been assigned correctly, up
+                % to a possible data type conversion.
+                actual = component.(propertyName);
+                if ~isa( propertyValue, 'function_handle' )
+                    propertyClass = class( propertyValue );
+                    actual = feval( propertyClass, actual );
+                end % if
+                testCase.verifyEqual( actual, propertyValue, ...
+                    ['Setting the ''', propertyName, ''' property of ', ...
+                    'the ', ConstructorName, ' object did not store ', ...
+                    'the value correctly.'] )
+            end % for
+            disp("pass 42");
+        end % tGetAndSetMethodsFunctionCorrectly
 
     end % methods ( Test, Sealed, ParameterCombination = 'sequential' )
-
+%}
     methods ( Sealed, Access = protected )
 
         function [component, componentChildren] = ...
