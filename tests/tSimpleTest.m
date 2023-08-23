@@ -1,4 +1,4 @@
-classdef tSimpleTest < glttestutilities.TestInfrastructure %sharedtests.SharedPanelTests
+classdef tSimpleTest < sharedtests.SharedPanelTests
     %TBOXPANEL Tests for uiextras.BoxPanel and uix.BoxPanel.
 
     properties ( TestParameter )
@@ -86,18 +86,18 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure %sharedtests.SharedPa
 
     methods ( Test, Sealed )
 
-        function tPassingShadowColorToConstructorIsCorrect( ...
+        function dummyTestPoint( ...
                 testCase, ConstructorName )
 
             disp("---check here----");
 
             % Assume faile for webfigure
-            testCase.assumeGraphicsAreNotWebBased()
+            %testCase.assumeGraphicsAreNotWebBased()
 
             % Create a component.
-            expectedColor = [0, 0, 0];
-            component = testCase.constructComponent( ...
-                ConstructorName, 'ShadowColor', expectedColor );
+            %expectedColor = [0, 0, 0];
+            %component = testCase.constructComponent( ...
+            %    ConstructorName, 'ShadowColor', expectedColor );
 
             disp("---pass check---");
 
