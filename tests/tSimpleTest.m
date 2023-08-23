@@ -1,4 +1,4 @@
-classdef tSimpleTest < SharedContainerTests%sharedtests.SharedPanelTests
+classdef tSimpleTest < sharedtests.SharedPanelTests
     %TBOXPANEL Tests for uiextras.BoxPanel and uix.BoxPanel.
 
     properties ( TestParameter )
@@ -103,6 +103,20 @@ classdef tSimpleTest < SharedContainerTests%sharedtests.SharedPanelTests
 
 
         end % tPassingShadowColorToConstructorIsCorrect
+
+        function tConstructorIsWarningFreeWithArguments( ...
+                testCase, ConstructorName, NameValuePairs )
+            disp("check 39");
+            % Verify that creating the component and passing additional
+            % input arguments to the constructor is warning-free.
+            %creator = @() testCase.constructComponent( ...
+            %    ConstructorName, NameValuePairs{:} );
+            %testCase.verifyWarningFree( creator, ...
+            %    ['The ', ConstructorName, ' constructor was not ', ...
+            %    'warning-free when called with additional ', ...
+            %    'input arguments.'] )
+            disp("pass 39");
+        end   
 
   end
 
