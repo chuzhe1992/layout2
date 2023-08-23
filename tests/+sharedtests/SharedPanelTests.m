@@ -33,7 +33,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
 
         function tContentsRespectPlacingBoxInPanel( ...
                 testCase, ConstructorName )
-
+            disp("check 1");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -42,12 +42,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
 
             % Verify that the 'Contents' property is correct.
             testCase.verifyEqual( component.Contents, box )
-
+            disp("pass 1");
         end % tContentsRespectPlacingBoxInPanel
 
         function tPanelContentsHaveCorrectVisibility( ...
                 testCase, ConstructorName )
-
+            disp("check 2");
             % Create the component with children.
             [component, kids] = testCase...
                 .constructComponentWithChildren( ConstructorName );
@@ -68,12 +68,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                     ['The unselected child in the ', ...
                     ConstructorName, ' component is visible.'] )
             end % for
-
+            disp("pass 2");
         end % tPanelContentsHaveCorrectVisibility
 
         function tSettingInvalidSelectionErrors( ...
                 testCase, ConstructorName, InvalidSelection )
-
+            disp("check 3");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -86,12 +86,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ['The ', ConstructorName, ' component did not throw ', ...
                 'the expected exception when the ''Selection'' ', ...
                 'property was set to an invalid value.'] )
-
+            disp("pass 3");
         end % tSettingInvalidSelectionErrors
 
         function tSettingInvalidSelectionErrorsWhenChildrenArePresent( ...
                 testCase, ConstructorName, InvalidSelection )
-
+            disp("check 4");
             % Create the component.
             component = testCase.constructComponentWithChildren( ...
                 ConstructorName );
@@ -105,12 +105,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ['The ', ConstructorName, ' component did not throw ', ...
                 'the expected exception when the ''Selection'' ', ...
                 'property was set to an invalid value.'] )
-
+            disp("pass 4");
         end % tSettingInvalidSelectionErrorsWhenChildrenArePresent
 
         function tSettingSelectionPropertyIsCorrect( ...
                 testCase, ConstructorName )
-
+            disp("check 5");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -122,12 +122,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ['Setting the ''Selection'' property on the ', ...
                 ConstructorName, ' component when it has no ', ...
                 'children did not return 0.'] )
-
+            disp("pass 5");
         end % tSettingSelectionPropertyIsCorrect
 
         function tSettingSelectionPropertyWithChildrenIsCorrect( ...
                 testCase, ConstructorName )
-
+            disp("check 6");
             % Create the component.
             component = testCase.constructComponentWithChildren( ...
                 ConstructorName );
@@ -140,12 +140,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ['Setting the ''Selection'' property on the ', ...
                 ConstructorName, ' component when it has ', ...
                 'children did not return the correct value.'] )
-
+            disp("pass 6");
         end % tSettingSelectionPropertyWithChildrenIsCorrect
 
         function tAddingInvisibleContainerIsWarningFree( ...
                 testCase, ConstructorName )
-
+            disp("check 7");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -157,12 +157,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
             testCase.verifyWarningFree( reparenter, ...
                 ['Reparenting an invisible container to the ', ...
                 ConstructorName, ' component was not warning-free.'] )
-
+            disp("pass 7");
         end % tAddingInvisibleContainerIsWarningFree
 
         function tAddingInvisibleControlIsWarningFree( ...
                 testCase, ConstructorName )
-
+            disp("check 8");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -174,12 +174,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
             testCase.verifyWarningFree( reparenter, ...
                 ['Reparenting an invisible control to the ', ...
                 ConstructorName, ' component was not warning-free.'] )            
-
+            disp("pass 8");
         end % tAddingInvisibleControlIsWarningFree
 
         function tAddingInternalControlDoesNotAffectContents( ...
                 testCase, ConstructorName )
-
+            disp("check 9");
             % Create the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -200,12 +200,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ['The ''Contents'' property of the ', ConstructorName, ...
                 ' component did not update when an internal control ', ...
                 'was switched to non-internal.'] )
-
+            disp("pass 9");
         end % tAddingInternalControlDoesNotAffectContents
 
         function tDynamicAdditionOfEnableProperty( ...
                 testCase, ConstructorName )
-
+            disp("check 10");
             % This test is only for components with a dynamic 'Enable'
             % property.
             testCase.assumeComponentHasDynamicEnableProperty( ...
@@ -243,7 +243,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 ConstructorName, ' component did not throw an error ', ...
                 'with ID ''uiextras:InvalidPropertyValue'' when ', ...
                 'the ''Enable'' property was not ''on'' or ''off''.'] )
-
+            disp("pass 10");
         end % tDynamicAdditionOfEnableProperty
 
     end % methods ( Test, Sealed )
