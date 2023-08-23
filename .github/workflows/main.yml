@@ -50,4 +50,4 @@ jobs:
       - name: Run the GLT tests
         uses: matlab-actions/run-command@v1
         with:
-          command: openProject("project.prj"); cd test; runtests("tBoxPanel.m");
+          command: openProject("project.prj"); runtests("test/tBoxPanel.m");
