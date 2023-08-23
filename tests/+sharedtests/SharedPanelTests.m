@@ -29,6 +29,12 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
 
     end % methods ( TestClassSetup )
 
+    methods(TestClassTeardown)
+        function showTestDone(testCase)
+            disp("done for SharedPanelTests");
+        end
+    end
+
     methods ( Test, Sealed )
 
         function tContentsRespectPlacingBoxInPanel( ...
