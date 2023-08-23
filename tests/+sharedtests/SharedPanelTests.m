@@ -130,7 +130,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'children did not return 0.'] )
             disp("pass 5");
         end % tSettingSelectionPropertyIsCorrect
-
+        %}
         function tSettingSelectionPropertyWithChildrenIsCorrect( ...
                 testCase, ConstructorName )
             disp("check 6");
@@ -251,7 +251,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'the ''Enable'' property was not ''on'' or ''off''.'] )
             disp("pass 10");
         end % tDynamicAdditionOfEnableProperty
-        %}
+        
     end % methods ( Test, Sealed )
 
 end % class
