@@ -4,10 +4,10 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure
 
          function tAddingInvisibleControlIsWarningFree(testCase )
 
-            ConstructorName = 'uiextras.BoxPanel'; % doesnt matter choosing 'uiextras.BoxPanel' or 'uix.BoxPanel'
+            %ConstructorName = 'uiextras.BoxPanel'; % doesnt matter choosing 'uiextras.BoxPanel' or 'uix.BoxPanel'
 
             % Create the component.
-            component = testCase.constructComponent(ConstructorName); 
+            %component = testCase.constructComponent(ConstructorName); 
 
             % Create an invisible control then reparent it to the
             % component.
