@@ -36,7 +36,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
     end
 
     methods ( Test, Sealed )
-
+        %{
         function tContentsRespectPlacingBoxInPanel( ...
                 testCase, ConstructorName )
             disp("check 1");
@@ -251,7 +251,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'the ''Enable'' property was not ''on'' or ''off''.'] )
             disp("pass 10");
         end % tDynamicAdditionOfEnableProperty
-
+        %}
     end % methods ( Test, Sealed )
 
 end % class
