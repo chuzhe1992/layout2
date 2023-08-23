@@ -39,6 +39,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
             }
     end % properties ( Constant )
 
+    methods(TestClassTeardown)
+        function showTestDone(testCase)
+            disp("done for SharedContainerTests");
+        end
+    end
+
     methods ( Test, Sealed )
 
         function tConstructorWithNoArgumentsIsWarningFree( ...
