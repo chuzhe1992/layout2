@@ -683,7 +683,7 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
 
         function tConstructorIsWarningFreeWithArguments( ...
                 testCase, ConstructorName, NameValuePairs )
-
+            disp("check 39");
             % Verify that creating the component and passing additional
             % input arguments to the constructor is warning-free.
             creator = @() testCase.constructComponent( ...
@@ -692,12 +692,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ['The ', ConstructorName, ' constructor was not ', ...
                 'warning-free when called with additional ', ...
                 'input arguments.'] )
-
+            disp("pass 39");
         end % tConstructorIsWarningFreeWithArguments
 
         function tConstructorWithArgumentsReturnsScalarComponent( ...
                 testCase, ConstructorName, NameValuePairs )
-
+            disp("check 40");
             % Call the component constructor.
             component = testCase.constructComponent( ...
                 ConstructorName, NameValuePairs{:} );
@@ -716,12 +716,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                 ' constructor did not return ', ...
                 'a scalar object when called with the ''Parent'' ', ...
                 'input argument and additional input arguments.'] )
-
+            disp("pass 40");
         end % tConstructorWithArgumentsReturnsScalarComponent
 
         function tConstructorSetsNameValuePairsCorrectly( ...
                 testCase, ConstructorName, NameValuePairs )
-
+            disp("check 41");
             % Call the component constructor.
             component = testCase.constructComponent( ...
                 ConstructorName, NameValuePairs{:} );
@@ -742,12 +742,12 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                     'assigned the ''', propertyName, ''' property ', ...
                     'correctly.'] )
             end % for
-
+            disp("pass41");
         end % tConstructorSetsNameValuePairsCorrectly
 
         function tGetAndSetMethodsFunctionCorrectly( ...
                 testCase, ConstructorName, NameValuePairs )
-
+            disp("check 42");
             % Construct the component.
             component = testCase.constructComponent( ConstructorName );
 
@@ -771,7 +771,7 @@ classdef ( Abstract ) SharedContainerTests < glttestutilities.TestInfrastructure
                     'the ', ConstructorName, ' object did not store ', ...
                     'the value correctly.'] )
             end % for
-
+            disp("pass 42");
         end % tGetAndSetMethodsFunctionCorrectly
 
     end % methods ( Test, Sealed, ParameterCombination = 'sequential' )
