@@ -1,9 +1,10 @@
-classdef tSimpleTest < glttestutilities.TestInfrastructure%sharedtests.SharedPanelTests
+classdef tSimpleTest < glttestutilities.TestInfrastructure
     %TBOXPANEL Tests for uiextras.BoxPanel and uix.BoxPanel.
 
     properties ( TestParameter )
         % The constructor name, or class, of the component under test.
         ConstructorName = {'uiextras.BoxPanel', 'uix.BoxPanel'}
+        %{
         % Name-value pair arguments to use when testing the component's
         % constructor and get/set methods.
         NameValuePairs = {{
@@ -70,8 +71,10 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure%sharedtests.SharedPan
             'UndockTooltipString', 'Undock', ...
             'Visible', 'on'
             }}
+            %}
     end % properties ( TestParameter )
 
+%{
     properties ( Constant )
         % Box panel properties that should support both strings and
         % character arrays.
@@ -83,7 +86,7 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure%sharedtests.SharedPan
             'HelpTooltipString';
             'CloseTooltipString'}
     end % properties ( Constant )
-
+%}
     methods ( Test, Sealed )
 
         function dummyTestPoint( ...
@@ -91,18 +94,10 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure%sharedtests.SharedPan
 
             disp("---check here----");
 
-            % Assume faile for webfigure
-            %testCase.assumeGraphicsAreNotWebBased()
-
-            % Create a component.
-            %expectedColor = [0, 0, 0];
-            %component = testCase.constructComponent( ...
-            %    ConstructorName, 'ShadowColor', expectedColor );
-
             disp("---pass check---");
 
 
-        end % tPassingShadowColorToConstructorIsCorrect
+        end 
         
          function tAddingInvisibleControlIsWarningFree( ...
                 testCase, ConstructorName )
