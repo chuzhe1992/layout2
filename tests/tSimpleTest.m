@@ -12,7 +12,7 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure
             % Create an invisible control then reparent it to the
             % component.
             button = uicontrol( 'Parent', [], 'Visible', 'off' );
-            %testCase.addTeardown( @() delete( button ) )
+            testCase.addTeardown( @() delete( button ) )
             %reparenter = @() set( button, 'Parent', component );
             %testCase.verifyWarningFree( reparenter, ...
             %    ['Reparenting an invisible control to the ', ...
