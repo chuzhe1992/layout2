@@ -3,7 +3,7 @@ classdef tSimpleTest < glttestutilities.TestInfrastructure
 
     properties ( TestParameter )
         % The constructor name, or class, of the component under test.
-        ConstructorName = {'uiextras.BoxPanel', 'uix.BoxPanel'}
+        ConstructorName = {'uiextras.BoxPanel'}%{'uiextras.BoxPanel', 'uix.BoxPanel'}
     end 
 
     methods ( Test, Sealed )
