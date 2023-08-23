@@ -36,7 +36,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
     end
 
     methods ( Test, Sealed )
-        %{
+        
         function tContentsRespectPlacingBoxInPanel( ...
                 testCase, ConstructorName )
             disp("check 1");
@@ -130,9 +130,9 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'children did not return 0.'] )
             disp("pass 5");
         end % tSettingSelectionPropertyIsCorrect
-        %}
+        
 
-        %{
+        
         function tSettingSelectionPropertyWithChildrenIsCorrect( ...
                 testCase, ConstructorName )
             disp("check 6");
@@ -210,7 +210,7 @@ classdef ( Abstract ) SharedPanelTests < sharedtests.SharedContainerTests
                 'was switched to non-internal.'] )
             disp("pass 9");
         end % tAddingInternalControlDoesNotAffectContents
-        %}
+        
 
         function tDynamicAdditionOfEnableProperty( ...
                 testCase, ConstructorName )
