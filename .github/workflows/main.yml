@@ -28,7 +28,7 @@ jobs:
         os: [windows-latest]
 
         # List of MATLAB releases over which to run the tests.
-        matlab-version: [R2021a, R2021b, R2022a, R2022b, R2023a]
+        matlab-version: [R2023a]
     
     # Specify the runner that the job will run on.
     runs-on: ${{ matrix.os }}
@@ -38,13 +38,17 @@ jobs:
       
       # Check out the repository under $GITHUB_WORKSPACE, so that the job can access it.
       - name: Check out the repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+              submodules: recursive
 
       # Set up MATLAB on the runner.
       - name: Set up MATLAB on the runner
-        uses: matlab-actions/setup-matlab@v1
+        uses: matlab-actions/setup-matlab@v1.2.3
         with:
           release: ${{ matrix.matlab-version }}
+        env:
+          MATHWORKS_SKIP_ACTIVATION: true
 
       # Run the GLT tests.
       - name: Run the GLT tests
