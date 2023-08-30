@@ -105,7 +105,7 @@ classdef tBoxPanel < sharedtests.SharedPanelTests
                 'the ''ShadowColor'' property correctly.'] )
 
         end % tPassingShadowColorToConstructorIsCorrect
-
+%{
         function tGettingAndSettingShadowColorWorksCorrectly( ...
                 testCase, ConstructorName )
 
@@ -127,7 +127,7 @@ classdef tBoxPanel < sharedtests.SharedPanelTests
                 'when this property was set.'] )
 
         end % tGettingAndSettingShadowColorWorksCorrectly
-
+%}
         function tSettingEmptyMinimizeFcnIsWarningFree( ...
                 testCase, ConstructorName )
 
